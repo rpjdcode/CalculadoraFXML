@@ -1,13 +1,23 @@
 package dad.rubenpablo.calculadorafxml;
 
+import dad.rubenpablo.calculadorafxml.mvc.CalculadoraController;
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class App extends Application {
 
+	private CalculadoraController controlador;
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
+		controlador = new CalculadoraController();
+		
+		Scene escena = new Scene(controlador.getView(), 320, 200);
+		
+		primaryStage.setTitle("CalculadoraFXML");
+		primaryStage.setScene(escena);
+		primaryStage.show();
 
 	}
 

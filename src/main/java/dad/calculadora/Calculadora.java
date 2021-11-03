@@ -1,5 +1,8 @@
 package dad.calculadora;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  * Implementación de la lógica de una calculadora.
  * @author Fran Vargas
@@ -18,6 +21,8 @@ public class Calculadora {
 	private char operador;
 	private Boolean nuevoOperando;
 	private String pantalla;
+	
+	private StringProperty contenido = new SimpleStringProperty();
 	
 	public Calculadora() {
 		borrar();
@@ -46,6 +51,7 @@ public class Calculadora {
 	public void borrarTodo() {
 		nuevoOperando = true;
 		pantalla = "0.0";
+		contenido.set(pantalla);
 	}
 	
 	/**
@@ -64,6 +70,7 @@ public class Calculadora {
 		}
 		this.operador = operador;
 		pantalla = "" + operando;
+		contenido.set(pantalla);
 	}
 	
 	/**
@@ -72,6 +79,7 @@ public class Calculadora {
 	public void insertarComa() {
 		if (!pantalla.contains("" + COMA)) {
 			pantalla += COMA;
+			contenido.set(pantalla);
 		}
 	}
 	
@@ -84,11 +92,26 @@ public class Calculadora {
 			if (nuevoOperando) {
 				nuevoOperando = false;
 				pantalla = "";
+				contenido.set(pantalla);
 			}
 			pantalla += digito;
+			contenido.set(pantalla);
 		} else if (digito == COMA) {
 			insertarComa();
 		}
 	}
+
+	public final StringProperty contenidoProperty() {
+		return this.contenido;
+	}
+	
+	public final String getContenido() {
+		return this.contenidoProperty().get();
+	}
+	
+	public final void setContenido(final String contenido) {
+		this.contenidoProperty().set(contenido);
+	}
+	
 	
 }
