@@ -1,4 +1,4 @@
-package dad.rubenpablo.calculadorafxml.mvc;
+package dad.rubenpablo.calculadorafxml;
 
 import java.io.IOException;
 import java.net.URL;

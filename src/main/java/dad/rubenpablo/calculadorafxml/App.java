@@ -1,6 +1,5 @@
 package dad.rubenpablo.calculadorafxml;
 
-import dad.rubenpablo.calculadorafxml.mvc.CalculadoraController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
