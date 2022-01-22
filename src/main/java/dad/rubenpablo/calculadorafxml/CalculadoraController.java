@@ -10,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
@@ -74,12 +76,38 @@ public class CalculadoraController implements Initializable{
 		return view;
 	}
 	
+	private void clearStyles() {
+		this.getView().getStylesheets().clear();
+	}
+	
 
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		pantallaText.textProperty().bind(calculadora.contenidoProperty());
+		
+		ContextMenu cm = new ContextMenu();
+		MenuItem item1 = new MenuItem("Tema clásico");
+		MenuItem item2 = new MenuItem("Tema moderno");
+		MenuItem item3 = new MenuItem("Sin tema");
+		
+		item1.setOnAction(e -> {
+			clearStyles();
+			this.getView().getStylesheets().add("/css/classic.css");
+		});
+		item2.setOnAction(e -> {
+			clearStyles();
+			this.getView().getStylesheets().add("/css/moderna.css");
+		});
+		
+		item3.setOnAction(e -> {
+			clearStyles();
+		});
+		
+		cm.getItems().addAll(item1, item2, item3);
+		
+		pantallaText.setContextMenu(cm);
 		
 	}
 

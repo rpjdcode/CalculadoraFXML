@@ -11,11 +11,11 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		controlador = new CalculadoraController();
-		controlador.getView().getStylesheets().add("/css/moderna.css");
-		//controlador.getView().getStylesheets().add("/css/classic.css");
 		Scene escena = new Scene(controlador.getView(), 320, 200);
 		
+		
 		primaryStage.setTitle("CalculadoraFXML");
+		
 		primaryStage.setScene(escena);
 		primaryStage.show();
 
